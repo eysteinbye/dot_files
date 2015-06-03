@@ -12,5 +12,5 @@ This is the dot.files I use on my Mac. Might not be the right for you :)
 
 ## Installation
 
-$ git clone git@github.com:eysteinbye/dot_files.git ~/.dot_files && ~/dot_files/setup.sh
+$ git clone git@github.com:eysteinbye/dot_files.git ~/.dot_files && ~/.dot_files/setup.sh
 
