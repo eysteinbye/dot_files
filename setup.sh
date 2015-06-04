@@ -23,6 +23,7 @@ if [ ! -e "$HOME/.vim/bundle/Vundle.vim" ]; then
 	git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 fi
 vim +PluginInstall +qall
+git clone https://github.com/kien/ctrlp.vim.git ~/.vim/bundle/ctrlp.vim
 
 # ------ Zsh
 
