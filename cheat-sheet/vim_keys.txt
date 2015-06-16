@@ -46,6 +46,16 @@ N (prev search result)
 <C-Up> Move line up 
 <C-Down> Move line down
 
+### Replace
+:%s/foo/bar/gc - Change all foo with bar (confirm)
+
+### Comment
+<Ctrl + v> 
+Arrow up/down
+<Shift + i>
+Type # or % or // etc.
+<ESC>
+
 ### Replace variable
 - set cursor on word
 - Press * (to highlight)

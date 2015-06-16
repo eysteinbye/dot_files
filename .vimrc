@@ -49,6 +49,13 @@ syntax enable
 " Set linenumbers
 set number
 
+" Tab controll
+filetype plugin indent on
+set tabstop=4
+set shiftwidth=4
+set expandtab
+
+
 " Set leader to ,
 let mapleader = ','
 
@@ -116,25 +123,3 @@ map <c-t> :tabnew<cr>
 	" What it looks like on commandline:
 	" phpunit --bootstrap ~/Sites/frontend/src/config/test-prepend.php BrowseHandlerTest.php
 " -------- [Unittest End] --------
-
-
-" Shortcuts
-"
-" Git commands
-" :Gblame
-" :Gstatus
-"
-" Ag commands
-" :Ag (search term)
-"
-" :ls Show buffers
-" :b [tab] switch buffer
-"
-" :e. (open file browser in curret tab)
-"
-"
-" #Replace variable
-" set cursor on word
-" Press * (to highlight)
-" ciw new_name [esc]
-" n (next) . (replace)
