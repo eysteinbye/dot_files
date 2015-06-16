@@ -1,0 +1,94 @@
+Shortcut modifiers
+"D" = "Command/cmd button"
+"S" = "Shift button"
+"C" = "Ctrl button"
+"M" = "Alt/Option/Meta button"
+
+### Edit
+u : undo
+dd : delete
+yy : copy line
+p : paste
+x : delete char
+dw delete word
+4dd. Delete 4 lines
+
+### Modes
+i : insert mode
+a : append (insert mode)
+v :  visual mode to select text
+
+### Omni Complete
+c-x c-o (Omni complete)
+
+### NERDTree
+<C-n> - Bring up NerdTree
+:NERDTreeFind (or ,f) - Show open file in Nerdtree
+
+### GoTo
+gd (Goto definition)
+:20 (Goto line nr.20)
+% Goto matching tag (closing tag)
+:m 23 (Move line or selection to line 23)
+
+### Find file (Fuzzy find)
+ctrl+p   
+ctrl+t to open i new tab
+
+### Search in file
+/echo (search for echo) (or space)
+n (next serach result)
+N (prev search result)
+* Search next under cursor
+# Search prev under cursor
+
+### Refactor
+<C-Up> Move line up 
+<C-Down> Move line down
+
+### Replace variable
+- set cursor on word
+- Press * (to highlight)
+ciw new_name [esc]
+n (next) . (replace)
+
+### Unit test
+:Test % (Run unittests in active file)
+S-C-r (run test)
+
+### Fugitive (Git)
+:Gblame
+:Gstatus
+
+### Find in files
+:Ag (search term)
+   t to open in new tab
+:grep echo *.php (Search for echo in all php files)
+:vimgrep echo *.php (Search for echo in all php files)
+ 
+### Buffers
+<F2> List buffest and wait for number to switch
+:ls Show buffers
+:b [tab] switch buffer
+:e (tab) Open file
+,diff - Check what is unsaved
+
+### Tabs
+<C-n> : Next tab
+<C-p> : Pre tab
+<C-t> : New tab
+
+:q - Close a tab or split
+? - Maximise a split
+<C-w> : Switch windows focus
+" :e. (open file browser in curret tab)
+
+
+--NEED:
+Clear before show result
+Split into multiline in quickfixlist (http://vimdoc.sourceforge.net/htmldoc/quickfix.html)
+
+
+NERD commenter
+
+
