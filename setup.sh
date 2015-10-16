@@ -16,7 +16,7 @@ else
 fi
 # Create symlink
 ln -s ~/.dot_files/.vimrc ~/.vimrc
-# Setup undle for Vim
+# Setup Vundle for Vim
 
 if [ ! -e "$HOME/.vim/bundle/Vundle.vim" ]; then
 	echo "Installing Vundle for Vim"
@@ -24,6 +24,7 @@ if [ ! -e "$HOME/.vim/bundle/Vundle.vim" ]; then
 fi
 vim +PluginInstall +qall
 git clone https://github.com/kien/ctrlp.vim.git ~/.vim/bundle/ctrlp.vim
+git clone git://github.com/godlygeek/tabular.git ~/.vim/bundle/tabular.vim
 
 # ------ Zsh
 

@@ -19,6 +19,8 @@ call vundle#begin()
 
 	" Ag plugin
 	Plugin 'rking/ag.vim'
+" Får ikke denne til å virke.. noe feil med Vundle som jeg ikke har tid til nå
+"    Plugin 'godlygeek/tabular'
 
 	"Plugin 'php.vim'
 	"Plugin 'php-doc'
@@ -32,7 +34,10 @@ filetype plugin indent on
 " Load CtrlP (Fuzzy find)
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 
-" OnmiComplete
+" Load Tabular 
+set runtimepath^=~/.vim/bundle/tabular
+"
+"OnmiComplete
 set omnifunc=syntaxcomplete#Complete
 
 " Scroll inside Vim and not terminal window
@@ -49,11 +54,13 @@ syntax enable
 " Set linenumbers
 set number
 
-" Tab controll
-filetype plugin indent on
-set tabstop=4
-set shiftwidth=4
 set expandtab
+set smarttab
+set shiftwidth=4
+set tabstop=4
+set autoindent
+set smartindent
+set wrap
 
 
 " Set leader to ,

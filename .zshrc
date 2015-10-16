@@ -87,6 +87,8 @@ export PATH=/Users/ebye/Sites/frontend/bin:$PATH
 # for phpunit (used by vim)"
 export PATH=/Users/ebye/Sites/frontend/vendor/bin:$PATH
 
+export PATH=/Users/ebye/.script:$PATH
+
 # GIT Alias 
 alias lg1="git log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
 
@@ -94,3 +96,5 @@ alias lg2="git log --graph --abbrev-commit --decorate --format=format:'%C(bold b
 
 LC_CTYPE=en_US.UTF-8
 LC_ALL=en_US.UTF-8
+
+source /Users/ebye/.iterm2_shell_integration.zsh
