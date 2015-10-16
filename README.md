@@ -8,7 +8,8 @@ This is the dot.files I use on my Mac. Might not be the right for you :)
 ## Prerequisites
 
 1. HomeBrew
-2. Oh-my-Zsh
+2. brew install ctags-exuberant
+3. Oh-my-Zsh
 
 ## Installation
 
