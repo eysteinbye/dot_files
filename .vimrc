@@ -6,21 +6,30 @@ call vundle#begin()
 
 	Plugin 'gmarik/vundle'
 
+    " Treeview
 	Plugin 'scrooloose/nerdtree.git'
 
+    " List, select and switch between buffers
 	Plugin 'Buffergator'
 
 	" PHPUnit QF (Unit tests for VIM)
-	Bundle 'joonty/vim-phpunitqf.git' 
+	Plugin 'joonty/vim-phpunitqf.git' 
 	"VDebug (runs the XDbeug)
-	Bundle 'joonty/vdebug.git'
+	Plugin 'joonty/vdebug.git'
 	" Git client
-	Bundle 'tpope/vim-fugitive'
+	Plugin 'tpope/vim-fugitive'
+
+    " Makes tabs
+    Plugin 'humiaozuzu/TabBar'
 
 	" Ag plugin
 	Plugin 'rking/ag.vim'
-" Får ikke denne til å virke.. noe feil med Vundle som jeg ikke har tid til nå
-"    Plugin 'godlygeek/tabular'
+   
+    " Align text with Tabularize
+    Plugin 'godlygeek/tabular'
+
+    " Show functions etc.
+    Plugin 'majutsushi/tagbar'
 
 	"Plugin 'php.vim'
 	"Plugin 'php-doc'
@@ -67,6 +76,9 @@ set wrap
 let mapleader = ','
 
 
+nmap <F8> :TagbarToggle<CR>
+
+
 " -------- [NERDTree Start] --------
 	" Load NERDTree
 	autocmd VimEnter * NERDTree
@@ -92,7 +104,7 @@ let mapleader = ','
 " "M" = "Alt/Option/Meta button"
 
 " Space for search
-nmap <Space> /
+"nmap <Space> /
 
 " Move lines up or down
 noremap <C-Up> ddkkp
