@@ -1,72 +1,95 @@
+" -------- [ Shortcuts] ----------
+
+" F2 (List active buffers)
+" F8 togle TagBar (show functions from Ctag)
+"
+" C-p Fuzzy search for files
+" C-w Move to new window
+" C-w + (inc by 10 lines)
+" C-w _ (inc split to max)
+" C-w = (All splits are equal)
+" :res +10 (Resize split)
+
+" :ag string
+" :Tab - (Tabulerize on -)
+"
+
+" C-x C-o For php AutoComplete
+
+" C-n Togle Tree
+
+
+" -- Phpqa
+" :Php - check for syntax errors
+" :Phpcs - run code sniffer
+" :Phpmd - run mess detector (will ask for a rule XML file if not set)
+" :Phpcc - show code coverage (will ask for a clover XML file if not set)
+"
 " -------- [Vundle Start] --------
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-	Plugin 'gmarik/vundle'
-
     " Treeview
 	Plugin 'scrooloose/nerdtree.git'
-
-    " List, select and switch between buffers
-	Plugin 'Buffergator'
-
-	" PHPUnit QF (Unit tests for VIM)
-	Plugin 'joonty/vim-phpunitqf.git' 
-	"VDebug (runs the XDbeug)
-	Plugin 'joonty/vdebug.git'
-	" Git client
-	Plugin 'tpope/vim-fugitive'
-
-    " Makes tabs
-    Plugin 'humiaozuzu/TabBar'
-
 	" Ag plugin
 	Plugin 'rking/ag.vim'
-   
     " Align text with Tabularize
     Plugin 'godlygeek/tabular'
-
     " Show functions etc.
     Plugin 'majutsushi/tagbar'
+    
+	" Git client
+	Plugin 'tpope/vim-fugitive'
+   
 
-	"Plugin 'php.vim'
-	"Plugin 'php-doc'
-	"Bundle 'joonty/vim-phpqa.git'
+    " EasyMotion
+    Plugin 'easymotion/vim-easymotion'
+
+
+	" PHPUnit QF (Unit tests for VIM)
+	"Plugin 'joonty/vim-phpunitqf.git' 
+	" VDebug (runs the XDbeug)
+	"Plugin 'joonty/vdebug.git'
+
+    " Php QA Tools
+	Bundle 'joonty/vim-phpqa.git'
 
 call vundle#end()
 filetype plugin indent on
 " -------- [Vundle End] --------
 
-
 " Load CtrlP (Fuzzy find)
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 
 " Load Tabular 
-set runtimepath^=~/.vim/bundle/tabular
-"
-"OnmiComplete
-set omnifunc=syntaxcomplete#Complete
+"set runtimepath^=~/.vim/bundle/tabular
 
-" Scroll inside Vim and not terminal window
-set mouse=nicr
+syntax enable                        " Enable syntax highlighting
+
+set clipboard=unnamedplus             " yank and paste with the system clipboard
+"set mouse=nicr                       " Scroll inside Vim and not terminal window
+set mouse=a                           " Mouse selects in visual mode
+
+set directory-=.                     " don't store swapfiles in the current directory
+set encoding=utf-8
+
+set ruler                            " show where you are
+set number                           " Set linenumbers
+
+set omnifunc=syntaxcomplete#Complete " OnmiComplete
+
 
 " Search settings
-set ignorecase " Case will be ignored when you search
-set incsearch " You will see results while you type
-set hlsearch " Search matches are highlighted
-
-" Enable syntax highlighting
-syntax enable
-
-" Set linenumbers
-set number
+set ignorecase                       " Case will be ignored when you search
+set incsearch                        " You will see results while you type
+set hlsearch                         " Search matches are highlighted
 
 set expandtab
 set smarttab
-set shiftwidth=4
-set tabstop=4
+set shiftwidth=4                     " normal mode indentation commands use 4 spaces
+set tabstop=4                        " actual tabs occupy 4 characters
 set autoindent
 set smartindent
 set wrap
@@ -92,9 +115,26 @@ nmap <F8> :TagbarToggle<CR>
 	" Togle NERDTreee on C-n (Show the tree-view)
 	map <C-n> :NERDTreeToggle<CR>
 	" Show the open file in NERDTree
-	nnoremap <leader>f :NERDTreeFind<CR>
+    map <C-f> :NERDTreeFind<CR>
 " -------- [NERDTree End] --------
 
+
+" -------- [PHP QA tool] Start---------
+    let g:phpqa_messdetector_ruleset = "/path/to/phpmd.xml"
+
+    " Set the codesniffer args
+    let g:phpqa_codesniffer_args = "--standard=Zend"
+
+
+    " PHP executable (default = "php")
+    let g:phpqa_php_cmd='/path/to/php'
+
+    " PHP Code Sniffer binary (default = "phpcs")
+    let g:phpqa_codesniffer_cmd='/path/to/phpcs'
+
+    " PHP Mess Detector binary (default = "phpmd")
+    let g:phpqa_messdetector_cmd='/path/to/phpmd'
+" -------- [PHP QA tool End]---------
 
 
 " Shortcut modifiers
@@ -103,8 +143,8 @@ nmap <F8> :TagbarToggle<CR>
 " "C" = "Ctrl button"
 " "M" = "Alt/Option/Meta button"
 
-" Space for search
-"nmap <Space> /
+" Space for search (Never use this)
+" nmap <Space> /
 
 " Move lines up or down
 noremap <C-Up> ddkkp
@@ -119,26 +159,27 @@ map <Up> gk
 " Check what is unsaved
 map <leader>diff :w !diff % -
 
-" List buffest and wait for number to switch
+" List buffers and wait for number to switch
 nnoremap <F2> :buffers<CR>:buffer<Space>
 
 " n = Next tab
-map <c-n> :tabn<cr>
+"map <C-n> :tabn<cr>
 " p = Prev tab
-map <c-p> :tabp<cr>
+"map <C-p> :tabp<cr>
 " t = tab (new tab)
-map <c-t> :tabnew<cr>
+"map <C-t> :tabnew<cr>
 
 
 " -------- [Unittest Start] --------
 	" Run unit tests (Shift-Ctrl-r)
 	nnoremap <S-C-r> :Test %<CR>
 
-	" Set the phpunit command
-	"let g:phpunit_cmd = "~/Sites/frontend/vendor/bin/phpunit"
+" Set the phpunit command
+	" let g:phpunit_cmd = "~/Sites/frontend/vendor/bin/phpunit"
 
-	" Set the args for phpunit
-	"let g:phpunit_args = "--bootstrap ~/Sites/frontend/src/config/test-prepend.php"
+" Set the args for phpunit
+	" let g:phpunit_args = "--bootstrap ~/Sites/frontend/src/config/test-prepend.php"
 	" What it looks like on commandline:
 	" phpunit --bootstrap ~/Sites/frontend/src/config/test-prepend.php BrowseHandlerTest.php
 " -------- [Unittest End] --------
+"

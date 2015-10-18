@@ -97,4 +97,3 @@ alias lg2="git log --graph --abbrev-commit --decorate --format=format:'%C(bold b
 LC_CTYPE=en_US.UTF-8
 LC_ALL=en_US.UTF-8
 
-source /Users/ebye/.iterm2_shell_integration.zsh
