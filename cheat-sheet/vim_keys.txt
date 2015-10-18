@@ -1,3 +1,18 @@
+ -------- [ Shortcuts] ----------
+
+" F8 togle TagBar (show functions from Ctag)
+
+" :Tab - (Tabulerize on -)
+
+" ,,w    EasyMotion
+
+" -- Phpqa
+" :Php - check for syntax errors
+" :Phpcs - run code sniffer
+" :Phpmd - run mess detector (will ask for a rule XML file if not set)
+" :Phpcc - show code coverage (will ask for a clover XML file if not set)
+
+
 Shortcut modifiers
 "D" = "Command/cmd button"
 "S" = "Shift button"
@@ -19,11 +34,11 @@ a : append (insert mode)
 v :  visual mode to select text
 
 ### Omni Complete
-c-x c-o (Omni complete)
+C-x C-o (Omni complete)
 
 ### NERDTree
 <C-n> - Bring up NerdTree
-:NERDTreeFind (or ,f) - Show open file in Nerdtree
+<C-f> - Show open file in Nerdtree
 
 ### GoTo
 gd (Goto definition)
@@ -32,8 +47,27 @@ gd (Goto definition)
 :m 23 (Move line or selection to line 23)
 
 ### Find file (Fuzzy find)
-ctrl+p   
-ctrl+t to open i new tab
+
+<C-p> Fuzzy search for files
+<C-t> to open i new tab
+<C-w> Move to new window
+<C-w> + (inc by 10 lines)
+<C-w> _ (inc split to max)
+<C-w> = (All splits are equal)
+:res +10 (Resize split)
+
+### Buffers
+<F2> List buffest and wait for number to switch
+:ls Show buffers
+:b [tab] switch buffer
+:e (tab) Open file
+
+### Splits 
+:q - Close a tab or split
+? - Maximise a split
+<C-w> : Switch windows focus
+" :e. (open file browser in curret tab)
+,diff - Check what is unsaved
 
 ### Search in file
 /echo (search for echo) (or space)
@@ -76,22 +110,7 @@ S-C-r (run test)
 :grep echo *.php (Search for echo in all php files)
 :vimgrep echo *.php (Search for echo in all php files)
  
-### Buffers
-<F2> List buffest and wait for number to switch
-:ls Show buffers
-:b [tab] switch buffer
-:e (tab) Open file
-,diff - Check what is unsaved
 
-### Tabs
-<C-n> : Next tab
-<C-p> : Pre tab
-<C-t> : New tab
-
-:q - Close a tab or split
-? - Maximise a split
-<C-w> : Switch windows focus
-" :e. (open file browser in curret tab)
 
 
 --NEED:

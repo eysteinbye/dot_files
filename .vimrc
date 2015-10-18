@@ -1,29 +1,10 @@
-" -------- [ Shortcuts] ----------
-
-" F2 (List active buffers)
-" F8 togle TagBar (show functions from Ctag)
+" Shortcuts in cheat-sheets/vim-keys.txt 
 "
-" C-p Fuzzy search for files
-" C-w Move to new window
-" C-w + (inc by 10 lines)
-" C-w _ (inc split to max)
-" C-w = (All splits are equal)
-" :res +10 (Resize split)
-
-" :ag string
-" :Tab - (Tabulerize on -)
-"
-
-" C-x C-o For php AutoComplete
-
-" C-n Togle Tree
-
-
-" -- Phpqa
-" :Php - check for syntax errors
-" :Phpcs - run code sniffer
-" :Phpmd - run mess detector (will ask for a rule XML file if not set)
-" :Phpcc - show code coverage (will ask for a clover XML file if not set)
+" Shortcut modifiers
+" "D" = "Command/cmd button"
+" "S" = "Shift button"
+" "C" = "Ctrl button"
+" "M" = "Alt/Option/Meta button"
 "
 " -------- [Vundle Start] --------
 set nocompatible
@@ -49,9 +30,9 @@ call vundle#begin()
 
 
 	" PHPUnit QF (Unit tests for VIM)
-	"Plugin 'joonty/vim-phpunitqf.git' 
+	Plugin 'joonty/vim-phpunitqf.git' 
 	" VDebug (runs the XDbeug)
-	"Plugin 'joonty/vdebug.git'
+	Plugin 'joonty/vdebug.git'
 
     " Php QA Tools
 	Bundle 'joonty/vim-phpqa.git'
@@ -63,14 +44,11 @@ filetype plugin indent on
 " Load CtrlP (Fuzzy find)
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 
-" Load Tabular 
-"set runtimepath^=~/.vim/bundle/tabular
-
 syntax enable                        " Enable syntax highlighting
 
-set clipboard=unnamedplus             " yank and paste with the system clipboard
-"set mouse=nicr                       " Scroll inside Vim and not terminal window
-set mouse=a                           " Mouse selects in visual mode
+set clipboard=unnamedplus            " yank and paste with the system clipboard
+"set mouse=nicr                      " Scroll inside Vim and not terminal window
+set mouse=a                          " Mouse selects in visual mode
 
 set directory-=.                     " don't store swapfiles in the current directory
 set encoding=utf-8
@@ -94,10 +72,11 @@ set autoindent
 set smartindent
 set wrap
 
+" http://vimdoc.sourceforge.net/htmldoc/spell.html
+setlocal spell spelllang=en_us
 
 " Set leader to ,
 let mapleader = ','
-
 
 nmap <F8> :TagbarToggle<CR>
 
@@ -120,6 +99,9 @@ nmap <F8> :TagbarToggle<CR>
 
 
 " -------- [PHP QA tool] Start---------
+
+    " ToDo Add correct path here
+
     let g:phpqa_messdetector_ruleset = "/path/to/phpmd.xml"
 
     " Set the codesniffer args
@@ -137,14 +119,7 @@ nmap <F8> :TagbarToggle<CR>
 " -------- [PHP QA tool End]---------
 
 
-" Shortcut modifiers
-" "D" = "Command/cmd button"
-" "S" = "Shift button"
-" "C" = "Ctrl button"
-" "M" = "Alt/Option/Meta button"
-
-" Space for search (Never use this)
-" nmap <Space> /
+" nmap <Space> /      " Space for search (Never use this)
 
 " Move lines up or down
 noremap <C-Up> ddkkp
@@ -161,14 +136,6 @@ map <leader>diff :w !diff % -
 
 " List buffers and wait for number to switch
 nnoremap <F2> :buffers<CR>:buffer<Space>
-
-" n = Next tab
-"map <C-n> :tabn<cr>
-" p = Prev tab
-"map <C-p> :tabp<cr>
-" t = tab (new tab)
-"map <C-t> :tabnew<cr>
-
 
 " -------- [Unittest Start] --------
 	" Run unit tests (Shift-Ctrl-r)
