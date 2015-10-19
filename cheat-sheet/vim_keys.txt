@@ -6,6 +6,8 @@
 
 " ,,w    EasyMotion
 
+" z=   (On a word, will give alternatives for spelling)
+
 " -- Phpqa
 " :Php - check for syntax errors
 " :Phpcs - run code sniffer
