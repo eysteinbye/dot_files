@@ -1,45 +1,32 @@
 " Shortcuts in cheat-sheets/vim-keys.txt 
-"
+
 " Shortcut modifiers
 " "D" = "Command/cmd button"
 " "S" = "Shift button"
 " "C" = "Ctrl button"
 " "M" = "Alt/Option/Meta button"
-"
+
+
+set nocompatible                     " Use Vim settings, rather then Vi settings
+
 " -------- [Vundle Start] --------
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-    " Treeview
-	Plugin 'scrooloose/nerdtree.git'
-	" Ag plugin
-	Plugin 'rking/ag.vim'
-    " Align text with Tabularize
-    Plugin 'godlygeek/tabular'
-    " Show functions etc.
-    Plugin 'majutsushi/tagbar'
-    
-	" Git client
-	Plugin 'tpope/vim-fugitive'
-   
-    " Git diff
-    Plugin 'vim-scripts/svndiff'
-
-    " EasyMotion
-    Plugin 'easymotion/vim-easymotion'
-
-
-	" PHPUnit QF (Unit tests for VIM)
-	" Plugin 'joonty/vim-phpunitqf.git' 
-	" VDebug (runs the XDbeug)
-	" Plugin 'joonty/vdebug.git'
-
-    " Php QA Tools
-	" Bundle 'joonty/vim-phpqa.git'
-
-    Plugin 'flazz/vim-colorschemes'
+    Plugin 'scrooloose/nerdtree.git'   " Treeview
+	Plugin 'rking/ag.vim'              " Ag plugin
+    Plugin 'godlygeek/tabular'         " Align text with Tabularize
+    Plugin 'majutsushi/tagbar'         " Show functions etc.
+	Plugin 'tpope/vim-fugitive'        " Git client
+    Plugin 'vim-scripts/svndiff'       " Git diff
+    Plugin 'easymotion/vim-easymotion' " EasyMotion
+    Plugin 'kien/ctrlp.vim'            " Fuzzy find
+    Plugin 'flazz/vim-colorschemes'    " Schemes
+	Plugin 'joonty/vim-phpunitqf.git' " PHPUnit QF (Unit tests for VIM)
+	"Plugin 'joonty/vdebug.git'        " VDebug (runs the XDbeug)
+	"Bundle 'joonty/vim-phpqa.git'     " Php QA Tools
 
     " To try: 
     " https://github.com/Shougo/unite.vim
@@ -49,60 +36,103 @@ call vundle#end()
 filetype plugin indent on
 " -------- [Vundle End] --------
 
-" Load CtrlP (Fuzzy find)
-set runtimepath^=~/.vim/bundle/ctrlp.vim
-
 syntax enable                        " Enable syntax highlighting
 
-set clipboard=unnamedplus            " yank and paste with the system clipboard
-"set mouse=nicr                      " Scroll inside Vim and not terminal window
-set mouse=a                          " Mouse selects in visual mode
+set clipboard=unnamedplus            " Yank and paste with the system clipboard
+set mouse=a                          " Mouse selects in visual mode (Used nicr)
 
-set directory-=.                     " don't store swapfiles in the current directory
+set directory-=.                     " Don't store swapfiles in the current directory
 set encoding=utf-8
 
-set ruler                            " show where you are
+set ruler                            " Dhow where you are
 set number                           " Set linenumbers
 set numberwidth=5                    " Width of numbers
+set showcmd                          " Display incomplete commands
+set so=7                             " Set the scrolloff cursor position. See 7 lines under
+set laststatus=2                     " Always display the status line
 
 set omnifunc=syntaxcomplete#Complete " OnmiComplete
 
-
-" Search settings
-set ignorecase                       " Case will be ignored when you search
 set incsearch                        " You will see results while you type
 set hlsearch                         " Search matches are highlighted
+set ignorecase                       " Case will be ignored when you search
+set smartcase                        " If search contains up-case it is case sensitive
 
-set expandtab
-set smarttab
-set shiftwidth=4                     " normal mode indentation commands use 4 spaces
-set tabstop=4                        " actual tabs occupy 4 characters
-set autoindent
-set smartindent
-set wrap
+set expandtab                        " Insert space characters whenever the tab key is pressed
+set tabstop=4                        " Actual tabs occupy 4 characters
+set shiftwidth=4                     " Normal mode indentation commands use 4 spaces
+set autoindent                       " Use the indentation from the previous line, when starting a new line
+set smartindent                      " Inserts one extra level of indentation in (if, while, for etc.)
+set smarttab                         " Dont think I need this
+
+set wrap                             " Word wrap only visually
+set nostartofline                    " Keep column when jumping to other lines
+
+set backspace=2                      " Backspace deletes like most programs in insert mode
+set backspace=indent,eol,start       " Delete over line breaks etc.
+set history=500                      " History includes previous search patterns as well as command-line entries
+
+set undodir=~/.vim/undo/             " Set a directory to store the undo history
+set undofile                         " Use a file for persistent undo
+set undolevels=1000                  " Maximum number of changes that can be undone
+set undoreload=10000                 " Maximum number lines to save for undo on a buffer reload
+
+"colorscheme phphaxor                 " Set the color scheme
+colorscheme radicalgoodspeed
+set background=dark                  " Tell Vim that we are using a dark background
+set encoding=utf-8                   " Sets how vim shall represent characters internally
+
+set nobackup                         " Dont keep backup files
+set nowb                             " No automatic write backup
+set noswapfile                       " No swap files
+
+set ffs=unix,dos,mac                 " Vim will look for these file formats. New will use unix
+
+set autoread                         " Reloads on some external commands
+set showmatch                        " Show match-paren like { } and use % to jump
+set visualbell                       " Chose -visual bell- effect rather than -beeping-
+set hidden                           " Causes files to be hidden instead of closed
 
 
-set nocompatible  " Use Vim settings, rather then Vi settings
-
-set backspace=2   " Backspace deletes like most programs in insert mode
-set history=500
-set showcmd       " display incomplete commands
-set laststatus=2  " Always display the status line
 
 " Fuzzy finder: ignore stuff that can't be opened, and generated files
 let g:fuzzy_ignore ="*.png;*.PNG;*.JPG;*.jpg;*.GIF;*.gif;vendor/**;coverage/**;tmp/**;rdoc/**"
-
-" Color scheme
-colorscheme phphaxor
-set background=dark
-set encoding=utf-8
-
 
 " Not so sure about this one 
 "nnoremap <Left> :echoe "Use h"<CR>
 "nnoremap <Right> :echoe "Use l"<CR>
 "nnoremap <Up> :echoe "Use k"<CR>
 "nnoremap <Down> :echoe "Use j"<CR>
+
+
+" Activate visual mode in normal mode with shift-arrow (might not be smart)
+nmap <S-Up> v<Up>
+nmap <S-Down> v<Down>
+nmap <S-Left> v<Left>
+nmap <S-Right> v<Right>
+vmap <S-Up> <Up>
+vmap <S-Down> <Down>
+vmap <S-Left> <Left>
+vmap <S-Right> <Right>
+imap <S-Up> <Esc>v<Up>
+imap <S-Down> <Esc>v<Down>
+imap <S-Left> <Esc>v<Left>
+imap <S-Right> <Esc>v<Right>
+" Paste, copy, cut
+vmap <C-c> y<Esc>i
+vmap <C-x> d<Esc>i
+map <C-v> pi
+imap <C-v> <Esc>pi
+imap <C-z> <Esc>ui
+
+"Commenting with # " or //
+vmap ,# :s/^/#/<CR>:noh<CR>
+vmap ,// :s/^/\/\//<CR>:noh<CR>
+vmap ," :s/^/"/<CR>:noh<CR>
+
+
+nnoremap <CR> :noh<CR><CR> " Clear search highlight
+
 
 
 " Tab completion
@@ -121,11 +151,6 @@ endfunction
 inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
 
 
-" Persistent undo
-set undodir=~/.vim/undo/
-set undofile
-set undolevels=1000
-set undoreload=10000
 
 
 
@@ -156,6 +181,7 @@ nmap <F8> :TagbarToggle<CR>
 	" NERDTree OS-X fix
 	let g:NERDTreeDirArrows=0
 
+
 	" Togle NERDTreee on C-n (Show the tree-view)
 	map <C-n> :NERDTreeToggle<CR>
 	" Show the open file in NERDTree
@@ -163,21 +189,20 @@ nmap <F8> :TagbarToggle<CR>
 " -------- [NERDTree End] --------
 
 
-" -------- [PHP QA tool] Start---------
 
+" -------- [PHP QA tool] Start---------
     " ToDo Add correct path here
 
-    "let g:phpqa_messdetector_ruleset = "/path/to/phpmd.xml"
+    " let g:phpqa_messdetector_ruleset = "~/Sites/frontend/phpmd.xml"
 
     " Set the codesniffer args
     " let g:phpqa_codesniffer_args = "--standard=Zend"
-
 
     " PHP executable (default = "php")
     let g:phpqa_php_cmd='~/Sites/frontend/bin/zphp'
 
     " PHP Code Sniffer binary (default = "phpcs")
-    "let g:phpqa_codesniffer_cmd='/path/to/phpcs'
+    " let g:phpqa_codesniffer_cmd='/path/to/phpcs'
 
     " PHP Mess Detector binary (default = "phpmd")
     " let g:phpqa_messdetector_cmd='/Users/ebye/Sites/frontend/vendor/phpmd/phpmd'
@@ -214,4 +239,5 @@ nnoremap <F2> :buffers<CR>:buffer<Space>
 	" What it looks like on commandline:
 	" phpunit --bootstrap ~/Sites/frontend/src/config/test-prepend.php BrowseHandlerTest.php
 " -------- [Unittest End] --------
+"
 "
