@@ -24,18 +24,26 @@ call vundle#begin()
 	" Git client
 	Plugin 'tpope/vim-fugitive'
    
+    " Git diff
+    Plugin 'vim-scripts/svndiff'
 
     " EasyMotion
     Plugin 'easymotion/vim-easymotion'
 
 
 	" PHPUnit QF (Unit tests for VIM)
-	Plugin 'joonty/vim-phpunitqf.git' 
+	" Plugin 'joonty/vim-phpunitqf.git' 
 	" VDebug (runs the XDbeug)
-	Plugin 'joonty/vdebug.git'
+	" Plugin 'joonty/vdebug.git'
 
     " Php QA Tools
-	Bundle 'joonty/vim-phpqa.git'
+	" Bundle 'joonty/vim-phpqa.git'
+
+    Plugin 'flazz/vim-colorschemes'
+
+    " To try: 
+    " https://github.com/Shougo/unite.vim
+    " https://github.com/Shougo/neocomplete.vim
 
 call vundle#end()
 filetype plugin indent on
@@ -55,6 +63,7 @@ set encoding=utf-8
 
 set ruler                            " show where you are
 set number                           " Set linenumbers
+set numberwidth=5                    " Width of numbers
 
 set omnifunc=syntaxcomplete#Complete " OnmiComplete
 
@@ -72,8 +81,64 @@ set autoindent
 set smartindent
 set wrap
 
+
+set nocompatible  " Use Vim settings, rather then Vi settings
+
+set backspace=2   " Backspace deletes like most programs in insert mode
+set history=500
+set showcmd       " display incomplete commands
+set laststatus=2  " Always display the status line
+
+" Fuzzy finder: ignore stuff that can't be opened, and generated files
+let g:fuzzy_ignore ="*.png;*.PNG;*.JPG;*.jpg;*.GIF;*.gif;vendor/**;coverage/**;tmp/**;rdoc/**"
+
+" Color scheme
+colorscheme phphaxor
+set background=dark
+set encoding=utf-8
+
+
+" Not so sure about this one 
+"nnoremap <Left> :echoe "Use h"<CR>
+"nnoremap <Right> :echoe "Use l"<CR>
+"nnoremap <Up> :echoe "Use k"<CR>
+"nnoremap <Down> :echoe "Use j"<CR>
+
+
+" Tab completion
+" will insert tab at beginning of line,
+" will use completion if not at beginning
+set wildmode=list:longest,list:full
+set complete=.,w,t
+function! InsertTabWrapper()
+    let col = col('.') - 1
+    if !col || getline('.')[col - 1] !~ '\k'
+        return "\<tab>"
+    else
+        return "\<c-p>"
+    endif
+endfunction
+inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
+
+
+" Persistent undo
+set undodir=~/.vim/undo/
+set undofile
+set undolevels=1000
+set undoreload=10000
+
+
+
+noremap <F4> :call Svndiff("next")<CR>
+let g:svndiff_autoupdate = 1
+" Git diff highlight colors
+hi DiffAdd      ctermfg=0 ctermbg=2 guibg='green'
+hi DiffDelete   ctermfg=0 ctermbg=1 guibg='red'
+hi DiffChange   ctermfg=0 ctermbg=3 guibg='yellow'
+
+
 " http://vimdoc.sourceforge.net/htmldoc/spell.html
-setlocal spell spelllang=en_us
+" setlocal spell spelllang=en_us
 
 " Set leader to ,
 let mapleader = ','
@@ -102,20 +167,20 @@ nmap <F8> :TagbarToggle<CR>
 
     " ToDo Add correct path here
 
-    let g:phpqa_messdetector_ruleset = "/path/to/phpmd.xml"
+    "let g:phpqa_messdetector_ruleset = "/path/to/phpmd.xml"
 
     " Set the codesniffer args
-    let g:phpqa_codesniffer_args = "--standard=Zend"
+    " let g:phpqa_codesniffer_args = "--standard=Zend"
 
 
     " PHP executable (default = "php")
-    let g:phpqa_php_cmd='/path/to/php'
+    let g:phpqa_php_cmd='~/Sites/frontend/bin/zphp'
 
     " PHP Code Sniffer binary (default = "phpcs")
-    let g:phpqa_codesniffer_cmd='/path/to/phpcs'
+    "let g:phpqa_codesniffer_cmd='/path/to/phpcs'
 
     " PHP Mess Detector binary (default = "phpmd")
-    let g:phpqa_messdetector_cmd='/path/to/phpmd'
+    " let g:phpqa_messdetector_cmd='/Users/ebye/Sites/frontend/vendor/phpmd/phpmd'
 " -------- [PHP QA tool End]---------
 
 
