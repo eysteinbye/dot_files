@@ -16,6 +16,12 @@ else
 fi
 # Create symlink
 ln -s ~/.dot_files/.vimrc ~/.vimrc
+
+# Add color scheme
+mkdir ~/.vim/colors
+ln -s ~/.dot_files/eystein.vim ~/.vim/colors/eystein.vim
+
+
 # Setup Vundle for Vim
 
 if [ ! -e "$HOME/.vim/bundle/Vundle.vim" ]; then
@@ -23,8 +29,6 @@ if [ ! -e "$HOME/.vim/bundle/Vundle.vim" ]; then
 	git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 fi
 vim +PluginInstall +qall
-git clone https://github.com/kien/ctrlp.vim.git ~/.vim/bundle/ctrlp.vim
-git clone git://github.com/godlygeek/tabular.git ~/.vim/bundle/tabular.vim
 
 # ------ Zsh
 

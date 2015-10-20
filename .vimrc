@@ -23,7 +23,7 @@ call vundle#begin()
     Plugin 'vim-scripts/svndiff'       " Git diff
     Plugin 'easymotion/vim-easymotion' " EasyMotion
     Plugin 'kien/ctrlp.vim'            " Fuzzy find
-    Plugin 'flazz/vim-colorschemes'    " Schemes
+    "Plugin 'flazz/vim-colorschemes'    " Schemes
 	Plugin 'joonty/vim-phpunitqf.git' " PHPUnit QF (Unit tests for VIM)
 	"Plugin 'joonty/vdebug.git'        " VDebug (runs the XDbeug)
 	"Bundle 'joonty/vim-phpqa.git'     " Php QA Tools
@@ -78,7 +78,8 @@ set undolevels=1000                  " Maximum number of changes that can be und
 set undoreload=10000                 " Maximum number lines to save for undo on a buffer reload
 
 "colorscheme phphaxor                 " Set the color scheme
-colorscheme radicalgoodspeed
+"colorscheme radicalgoodspeed
+colorscheme eystein
 set background=dark                  " Tell Vim that we are using a dark background
 set encoding=utf-8                   " Sets how vim shall represent characters internally
 
