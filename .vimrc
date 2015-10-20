@@ -131,6 +131,8 @@ vmap ,// :s/^/\/\//<CR>:noh<CR>
 vmap ," :s/^/"/<CR>:noh<CR>
 
 
+noremap <C-d> <Del> " Forward-delete
+
 nnoremap <CR> :noh<CR><CR> " Clear search highlight
 
 
