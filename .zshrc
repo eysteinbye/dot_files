@@ -48,16 +48,47 @@ ZSH_THEME="eystein"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git vagrant osx brew npn node ant compose vim-integration screen web-search sudo encode64)
 
+
+# Load z
+. ~/.oh-my-zsh/plugins/z/z.sh
+
+# Load oh my zsh
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
+# Xcode via @orta
+openx(){ 
+    if test -n "$(find . -maxdepth 1 -name '*.xcworkspace' -print -quit)"
+    then
+        echo "Opening workspace"
+        open *.xcworkspace
+        return
+    else
+        if test -n "$(find . -maxdepth 1 -name '*.xcodeproj' -print -quit)"
+        then
+            echo "Opening project"
+            open *.xcodeproj
+            return  
+        else
+            echo "Nothing found"
+        fi
+    fi
+}
 
+# Go to the root of the current git project, or just go one folder up
+function up() {
+    export git_dir="$(git rev-parse --show-toplevel 2> /dev/null)"
+    if [ -z $git_dir ]
+    then
+        cd ..
+    else
+        cd $git_dir
+    fi
+}
+
+# User configuration
 export PATH="/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/usr/local/sbin"
 
 # export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -66,20 +97,7 @@ export PATH="/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/usr/local/sbin"
 #   export EDITOR='mvim'
 # fi
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
 
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Add path to current php
 export PATH=/Users/ebye/Sites/frontend/bin:$PATH
@@ -96,4 +114,8 @@ alias lg2="git log --graph --abbrev-commit --decorate --format=format:'%C(bold b
 
 LC_CTYPE=en_US.UTF-8
 LC_ALL=en_US.UTF-8
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
 
+# Dont use rbenv atm.
+#eval "$(rbenv init -)"
