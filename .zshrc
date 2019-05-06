@@ -46,7 +46,7 @@ ZSH_THEME="eystein"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git vagrant osx brew npn node ant compose vim-integration screen web-search sudo encode64)
+plugins=(git vagrant osx brew npm node ant composer vim-interaction screen web-search sudo encode64 textmate ssh-agent docker)
 
 
 # Load z
@@ -118,4 +118,14 @@ LC_ALL=en_US.UTF-8
 # export LANG=en_US.UTF-8
 
 # Dont use rbenv atm.
-#eval "$(rbenv init -)"
+eval "$(rbenv init -)"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/eybye/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/eybye/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/eybye/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/eybye/google-cloud-sdk/completion.zsh.inc'; fi
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
