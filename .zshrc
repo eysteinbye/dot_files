@@ -118,7 +118,7 @@ LC_ALL=en_US.UTF-8
 # export LANG=en_US.UTF-8
 
 # Dont use rbenv atm.
-eval "$(rbenv init -)"
+# eval "$(rbenv init -)"
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/eybye/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/eybye/google-cloud-sdk/path.zsh.inc'; fi
