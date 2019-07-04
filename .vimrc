@@ -23,14 +23,7 @@ call vundle#begin()
     Plugin 'vim-scripts/svndiff'       " Git diff
     Plugin 'easymotion/vim-easymotion' " EasyMotion
     Plugin 'kien/ctrlp.vim'            " Fuzzy find
-    "Plugin 'flazz/vim-colorschemes'    " Schemes
-	Plugin 'joonty/vim-phpunitqf.git' " PHPUnit QF (Unit tests for VIM)
-	"Plugin 'joonty/vdebug.git'        " VDebug (runs the XDbeug)
-	"Bundle 'joonty/vim-phpqa.git'     " Php QA Tools
 
-    " To try: 
-    " https://github.com/Shougo/unite.vim
-    " https://github.com/Shougo/neocomplete.vim
 
 call vundle#end()
 filetype plugin indent on
@@ -77,8 +70,6 @@ set undofile                         " Use a file for persistent undo
 set undolevels=1000                  " Maximum number of changes that can be undone
 set undoreload=10000                 " Maximum number lines to save for undo on a buffer reload
 
-"colorscheme phphaxor                 " Set the color scheme
-"colorscheme radicalgoodspeed
 colorscheme eystein
 set background=dark                  " Tell Vim that we are using a dark background
 set encoding=utf-8                   " Sets how vim shall represent characters internally
@@ -192,26 +183,6 @@ nmap <F8> :TagbarToggle<CR>
 " -------- [NERDTree End] --------
 
 
-
-" -------- [PHP QA tool] Start---------
-    " ToDo Add correct path here
-
-    " let g:phpqa_messdetector_ruleset = "~/Sites/frontend/phpmd.xml"
-
-    " Set the codesniffer args
-    " let g:phpqa_codesniffer_args = "--standard=Zend"
-
-    " PHP executable (default = "php")
-    let g:phpqa_php_cmd='~/Sites/frontend/bin/zphp'
-
-    " PHP Code Sniffer binary (default = "phpcs")
-    " let g:phpqa_codesniffer_cmd='/path/to/phpcs'
-
-    " PHP Mess Detector binary (default = "phpmd")
-    " let g:phpqa_messdetector_cmd='/Users/ebye/Sites/frontend/vendor/phpmd/phpmd'
-" -------- [PHP QA tool End]---------
-
-
 " nmap <Space> /      " Space for search (Never use this)
 
 " Move lines up or down
@@ -230,17 +201,4 @@ map <leader>diff :w !diff % -
 " List buffers and wait for number to switch
 nnoremap <F2> :buffers<CR>:buffer<Space>
 
-" -------- [Unittest Start] --------
-	" Run unit tests (Shift-Ctrl-r)
-	nnoremap <S-C-r> :Test %<CR>
 
-" Set the phpunit command
-	" let g:phpunit_cmd = "~/Sites/frontend/vendor/bin/phpunit"
-
-" Set the args for phpunit
-	" let g:phpunit_args = "--bootstrap ~/Sites/frontend/src/config/test-prepend.php"
-	" What it looks like on commandline:
-	" phpunit --bootstrap ~/Sites/frontend/src/config/test-prepend.php BrowseHandlerTest.php
-" -------- [Unittest End] --------
-"
-"
