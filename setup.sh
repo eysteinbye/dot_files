@@ -18,6 +18,7 @@ fi
 ln -s ~/.dot_files/.vimrc ~/.vimrc
 
 # Add color scheme
+mkdir ~/.vim
 mkdir ~/.vim/colors
 ln -s ~/.dot_files/eystein.vim ~/.vim/colors/eystein.vim
 
