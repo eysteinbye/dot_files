@@ -46,7 +46,7 @@ ZSH_THEME="eystein"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git vagrant osx brew npm node ant composer vim-interaction screen web-search sudo encode64 textmate ssh-agent docker)
+plugins=(git vagrant osx brew npm node ant composer vim-interaction screen web-search sudo encode64 textmate ssh-agent docker pyenv aws)
 
 
 # Load z
@@ -86,7 +86,7 @@ function up() {
 }
 
 # User configuration
-export PATH="/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/usr/local/sbin"
+export PATH="/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/usr/local/sbin:~/.bin"
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -98,14 +98,16 @@ export PATH="/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/usr/local/sbin"
 # fi
 
 
+# Pyenv shims
+export PATH=~/.pyenv/shims:$PATH
 
-# Add path to current php
-export PATH=/Users/ebye/Sites/frontend/bin:$PATH
+export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
+export WORKON_HOME=$HOME/.virtualenvs
+pyenv virtualenvwrapper_lazy
 
-# for phpunit (used by vim)"
-export PATH=/Users/ebye/Sites/frontend/vendor/bin:$PATH
+eval "$(pyenv init -)"
 
-export PATH=/Users/ebye/.script:$PATH
+export PATH=/Users/eysteinbye/.local/bin:$PATH
 
 # GIT Alias 
 alias lg1="git log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
@@ -120,12 +122,13 @@ LC_ALL=en_US.UTF-8
 # Dont use rbenv atm.
 # eval "$(rbenv init -)"
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/eybye/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/eybye/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/eybye/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/eybye/google-cloud-sdk/completion.zsh.inc'; fi
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/eysteinbye/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/eysteinbye/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/eysteinbye/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/eysteinbye/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
