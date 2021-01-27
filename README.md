@@ -18,9 +18,18 @@ This is the dot.files I use on my Mac. Might not be the right for you :)
 
 $ git clone git@github.com:eysteinbye/dot_files.git ~/.dot_files && ~/.dot_files/setup.sh
 
-## Other tools
 
-- [QuickLook Markdown files in Finder](https://github.com/toland/qlmarkdown)
+### Quick View
+
+[A collection of plugins](https://github.com/sindresorhus/quick-look-plugins)
+
+
+This Markdown viewer is also good!
+[QuickLook Markdown files in Finder](http://inkmarkapp.com/markdown-quick-look-plugin-mac-os-x/)
+
+
+### Other tools
+
 - AG - Silver Searcher - `brew install ag`
 - Tree - `brew install tree`
 - jq - `brew install jq`
