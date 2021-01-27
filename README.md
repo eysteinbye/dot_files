@@ -35,3 +35,12 @@ This Markdown viewer is also good!
 - jq - `brew install jq`
 
 
+### Scripts
+
+[Some scripts like ql](https://github.com/morgant/tools-osx)
+
+#### Mac Trach
+```
+brew install macos-trash
+alias rm="echo Use 'trash', or the full path i.e. '/bin/rm'"
+```
