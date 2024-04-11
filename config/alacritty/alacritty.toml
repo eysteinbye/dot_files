@@ -1,0 +1,235 @@
+# https://alacritty.org/config-alacritty.html
+# https://www.joshmedeski.com/posts/a-pretty-terminal-in-5-minutes/
+# https://www.joshmedeski.com/posts/macos-keyboard-shortcuts-for-tmux/
+
+live_config_reload = true
+
+[font]
+size = 16.0
+
+[font.normal]
+family = "Hack Nerd Font Mono"
+style = "Regular"
+
+[colors.primary]
+foreground = "#1bd81e"
+
+[scrolling]
+history = 10000
+multiplier = 3
+
+[window]
+decorations = "buttonless"
+dynamic_padding = false
+opacity = 0.95
+startup_mode = "SimpleFullscreen"
+padding = { x = 15, y = 15 }
+
+
+
+# Keybindings
+
+
+
+# Start the Tmux fzf session switcher - Cmd+Shift+T
+# This can also be started in a new shell with the command: t
+[[keyboard.bindings]]
+chars = "\u0002T" # Sends Ctrl+B, T
+key = "J"
+mods = "Command"
+
+
+# Map Backspace to Ctrl+H so Vim can map it to delete backwards
+[[keyboard.bindings]]
+chars = "\u0008" # Sends Ctrl+H
+key = "Backspace"
+
+
+
+
+# CMD mappings
+# Cmd + X and V work without any configuration
+# Capture some CMD+? and send it as Ctrl+? so Vim can map it
+# The Unicode escape sequences are: \u00XX Where XX is the hex value of the character
+# Many Ctrl characters are reserved:
+# 09 - Tab = Ctrl+I
+# 08 - Backspace = Ctrl+H
+# 0D - Carriage Return = Ctrl+M
+# 0A - Line Feed = Ctrl+J
+# etc.
+# https://en.wikipedia.org/wiki/Control_character#In_ASCII
+
+
+# Capture Cmd+S and send it as Ctrl+S so Vim can map it to save
+[[keyboard.bindings]]
+chars = "\u0013" # Sends Ctrl+S
+key = "S"
+mods = "Command"
+
+# Capture Cmd+A and send it as Ctrl+A so Vim can map it to select all
+[[keyboard.bindings]]
+chars = "\u0001" # Sends Ctrl+A
+key = "A"
+mods = "Command"
+
+# Capture Cmd+C and send it as Ctrl+C so Vim can map it to copy
+[[keyboard.bindings]]
+chars = "\u0003" # Sends Ctrl+C
+key = "C"
+mods = "Command"
+
+# Capture Cmd+z and send it as Ctrl+y so Vim can map it to undo
+# Ctrl+y
+[[keyboard.bindings]]
+chars = "\u0019" # Sends Ctrl+y
+key = "Z"
+mods = "Command"
+
+# Map Cmd+F to Ctrl+F so Vim can map it to search
+[[keyboard.bindings]]
+chars = "\u0006" # Sends Ctrl+F
+key = "F"
+mods = "Command"
+
+# Map Cmd+Shift+F to Ctrl+O so Vim can map it Find in files
+[[keyboard.bindings]]
+chars = "\u000F" # Sends Ctrl+O
+key = "F"
+mods = "Command|Shift"
+
+
+
+# Map Cmd+G to Ctrl+G so Vim can map it
+[[keyboard.bindings]]
+chars = "\u0007" # Sends Ctrl+G
+key = "G"
+mods = "Command"
+
+# Map Cmd+P to Ctrl+P so Vim can map it to open the file finder
+[[keyboard.bindings]]
+chars = "\u0010" # Sends Ctrl+P
+key = "P"
+mods = "Command"
+
+# Map Cmd+Shift+P to Ctrl+K so Vim can map it
+[[keyboard.bindings]]
+chars = "\u000B" # Sends Ctrl+K
+key = "P"
+mods = "Command|Shift"
+
+
+
+
+
+
+
+# TMUX mappings of CMD
+# Mapping CMD combinations and sending them as Ctrl+B as TMUX uses Ctrl+B as the prefix
+# D T W Arrow Tab
+# This will make Alacritty work like iTerm2 with Tmux
+
+# Split pane horizontally
+[[keyboard.bindings]]
+chars = "\u0002\"" # Sends Ctrl+B, "
+key = "D"
+mods = "Command"
+
+# Split pane vertically
+[[keyboard.bindings]]
+chars = "\u0002%" # Sends Ctrl+B, %
+key = "D"
+mods = "Command|Shift"
+
+# Zoom pane - Toggle - Shift+Cmd+Enter
+[[keyboard.bindings]]
+chars = "\u0002z" # Sends Ctrl+B, z
+key = "Enter"
+mods = "Shift|Command"
+
+# Create new Tmux window - Cmd+T
+[[keyboard.bindings]]
+chars = "\u0002c" # Sends Ctrl+B, c
+key = "T"
+mods = "Command"
+
+# Switch to next Tmux window - Ctrl+Tab
+[[keyboard.bindings]]
+chars = "\u0002n" # Sends Ctrl+B, n
+key = "Tab"
+mods = "Control"
+
+
+# Close pane or Window - Cmd+W
+[[keyboard.bindings]]
+chars = "\u0002x" # Sends Ctrl+B, x
+key = "W"
+mods = "Command"
+
+
+# Focus upper pane - Ctrl+Cmd+Up
+[[keyboard.bindings]]
+chars = "\u0002j" # Sends Ctrl+B, j
+key = "Up"
+mods = "Command|Control"
+
+# Focus lower pane - Ctrl+Cmd+Down
+[[keyboard.bindings]]
+chars = "\u0002k" # Sends Ctrl+B, k
+key = "Down"
+mods = "Command|Control"
+
+# Focus right pane - Ctrl+Cmd+Right
+[[keyboard.bindings]]
+chars = "\u0002l" # Sends Ctrl+B, l
+key = "Right"
+mods = "Command|Control"
+
+# Focus left pane - Ctrl+Cmd+Left
+[[keyboard.bindings]]
+chars = "\u0002h" # Sends Ctrl+B, h
+key = "Left"
+mods = "Command|Control"
+
+
+# Same as above, but mapped to Cmd+Option+Arrow
+# Focus upper pane - Ctrl+Option+Up
+[[keyboard.bindings]]
+chars = "\u0002j" # Sends Ctrl+B, j
+key = "Up"
+mods = "Command|Option"
+
+# Focus lower pane - Ctrl+Option+Down
+[[keyboard.bindings]]
+chars = "\u0002k" # Sends Ctrl+B, k
+key = "Down"
+mods = "Command|Option"
+
+# Focus right pane - Ctrl+Option+Right
+[[keyboard.bindings]]
+chars = "\u0002l" # Sends Ctrl+B, l
+key = "Right"
+mods = "Command|Option"
+
+# Focus left pane - Ctrl+Option+Left
+[[keyboard.bindings]]
+chars = "\u0002h" # Sends Ctrl+B, h
+key = "Left"
+mods = "Command|Option"
+
+
+# Show the Tmux clipboard buffer - Cmd+Shift+V
+[[keyboard.bindings]]
+chars = "\u0002=" # Sends Ctrl+B, =
+key = "V"
+mods = "Command|Option"
+
+
+
+
+# Test binding
+[[keyboard.bindings]]
+action = "ToggleViMode" # This is a good test binding since it will be visible in the status bar
+key = "E"
+mods = "Command"
+
+

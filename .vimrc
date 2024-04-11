@@ -85,7 +85,7 @@ set showmatch                        " Show match-paren like { } and use % to ju
 set visualbell                       " Chose -visual bell- effect rather than -beeping-
 set hidden                           " Causes files to be hidden instead of closed
 
-
+set spell
 
 " Fuzzy finder: ignore stuff that can't be opened, and generated files
 let g:fuzzy_ignore ="*.png;*.PNG;*.JPG;*.jpg;*.GIF;*.gif;vendor/**;coverage/**;tmp/**;rdoc/**"

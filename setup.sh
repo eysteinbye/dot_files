@@ -1,5 +1,13 @@
 #!/bin/bash
 
+config_folder="$HOME/.config"
+
+if [ ! -d "$config_folder" ]; then
+	mkdir -p "$config_folder"
+fi
+
+# Copy content of the config folder to the .config folder
+cp -r ~/.dot_files/config/* "$config_folder"
 
 # ------ VIM
 
@@ -10,7 +18,7 @@ vim_rc="$HOME/.vimrc"
 if [ -L $vim_rc ]; then
 	echo "Removing old symlink for .vimrc"
 	rm ~/.vimrc
-else	
+else
 	echo "Backing up old .vimrc to .vimrc.backup"
 	mv ~/.vimrc ~/.vimrc.backup
 fi
@@ -21,7 +29,6 @@ ln -s ~/.dot_files/.vimrc ~/.vimrc
 mkdir ~/.vim
 mkdir ~/.vim/colors
 ln -s ~/.dot_files/eystein.vim ~/.vim/colors/eystein.vim
-
 
 # Setup Vundle for Vim
 
@@ -38,7 +45,7 @@ zsh_rc="$HOME/.zshrc"
 if [ -L $zsh_rc ]; then
 	echo "Removing old symlink for .zshrc"
 	rm ~/.zshrc
-else	
+else
 	echo "Backing up old .zshrc to .zshrc.backup"
 	mv ~/.zshrc ~/.zshrc.backup
 fi
@@ -51,10 +58,8 @@ screen_rc="$HOME/.screenrc"
 if [ -L $screen_rc ]; then
 	echo "Removing old symlink for .screenrc"
 	rm ~/.screenrc
-else	
-	echo "Backing up old .screenrc to .screenrc.backup" 
+else
+	echo "Backing up old .screenrc to .screenrc.backup"
 	mv ~/.screenrc ~/.screenrc.backup
 fi
 ln -s ~/.dot_files/.screenrc ~/.screenrc
-
-
