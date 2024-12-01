@@ -1,8 +1,14 @@
-# https://alacritty.org/config-alacritty.html
-# https://www.joshmedeski.com/posts/a-pretty-terminal-in-5-minutes/
-# https://www.joshmedeski.com/posts/macos-keyboard-shortcuts-for-tmux/
 
-live_config_reload = true
+
+# Auto run Tmux when the terminal starts
+# -A will attach to existing session if it exists
+#[shell]
+#program = "/opt/homebrew/bin/tmux"
+#args = ["new-session", "-A", "-s", "🏡 Home"]
+# Obs! When all sessions are cloeed, tmux loads without the theme, I had to remove the lines above and run:
+# tmux new -s "Home"
+
+
 
 [font]
 size = 16.0
@@ -19,114 +25,76 @@ history = 10000
 multiplier = 3
 
 [window]
-decorations = "buttonless"
+# decorations = "buttonless"
+# Options are: "none", "buttonless", "full"
+decorations = "full"
+
 dynamic_padding = false
 opacity = 0.95
-startup_mode = "SimpleFullscreen"
+#startup_mode = "SimpleFullscreen"
+#Options are "SimpleFullscreen", "Fullscreen", "Maximized", "Windowed"
+startup_mode = "Windowed"
 padding = { x = 15, y = 15 }
 
+dynamic_title = false
+title = "eystein.bye@disruptive-technologies.com 💻"
+
+#position = { x = 300, y = 220 }
+#dimensions = { columns = 120, lines = 34 }
+
+# This will remove the option key, and will make it hard to
+# write signs like: \{}~ etc
+# option_as_alt = "OnlyLeft"
+
+[cursor]
+    #   - ▇ Block
+    #   - _ Underline
+    #   - | Beam
+style = "Beam"
 
 
-# Keybindings
+# Changes wanted!
+# - Remove selection when using arrow keys
+# - Send BS delete to remove selected text
+# - keep cursor in the same position when scrolling
 
 
 
-# Start the Tmux fzf session switcher - Cmd+Shift+T
+
+# -----------------------------------------------------------------------------
+# Keybindings - Tmux - Binds Ctrl+B, key
+# -----------------------------------------------------------------------------
+#
+#
+# TMUX mappings of CMD
+# Mapping CMD combinations and sending them as Ctrl+B as TMUX uses Ctrl+B as the prefix
+# D T W Arrow Tab
+# This will make Alacritty work like iTerm2 with Tmux
+
+# Fullscreen - Cmd+Enter
+[[keyboard.bindings]]
+action = "ToggleMaximized"
+key = "Enter"
+mods = "Command"
+
+# Start Sesh - Cmd+J
 # This can also be started in a new shell with the command: t
 [[keyboard.bindings]]
 chars = "\u0002T" # Sends Ctrl+B, T
 key = "J"
 mods = "Command"
 
-
-# Map Backspace to Ctrl+H so Vim can map it to delete backwards
+# Start SessionX - Cmd+O
 [[keyboard.bindings]]
-chars = "\u0008" # Sends Ctrl+H
-key = "Backspace"
-
-
-
-
-# CMD mappings
-# Cmd + X and V work without any configuration
-# Capture some CMD+? and send it as Ctrl+? so Vim can map it
-# The Unicode escape sequences are: \u00XX Where XX is the hex value of the character
-# Many Ctrl characters are reserved:
-# 09 - Tab = Ctrl+I
-# 08 - Backspace = Ctrl+H
-# 0D - Carriage Return = Ctrl+M
-# 0A - Line Feed = Ctrl+J
-# etc.
-# https://en.wikipedia.org/wiki/Control_character#In_ASCII
-
-
-# Capture Cmd+S and send it as Ctrl+S so Vim can map it to save
-[[keyboard.bindings]]
-chars = "\u0013" # Sends Ctrl+S
-key = "S"
+chars = "\u0002o" # Sends Ctrl+B, o
+key = "O"
 mods = "Command"
 
-# Capture Cmd+A and send it as Ctrl+A so Vim can map it to select all
+# Start Eysteins Port-forward in tmux session
 [[keyboard.bindings]]
-chars = "\u0001" # Sends Ctrl+A
-key = "A"
-mods = "Command"
-
-# Capture Cmd+C and send it as Ctrl+C so Vim can map it to copy
-[[keyboard.bindings]]
-chars = "\u0003" # Sends Ctrl+C
-key = "C"
-mods = "Command"
-
-# Capture Cmd+z and send it as Ctrl+y so Vim can map it to undo
-# Ctrl+y
-[[keyboard.bindings]]
-chars = "\u0019" # Sends Ctrl+y
-key = "Z"
-mods = "Command"
-
-# Map Cmd+F to Ctrl+F so Vim can map it to search
-[[keyboard.bindings]]
-chars = "\u0006" # Sends Ctrl+F
-key = "F"
-mods = "Command"
-
-# Map Cmd+Shift+F to Ctrl+O so Vim can map it Find in files
-[[keyboard.bindings]]
-chars = "\u000F" # Sends Ctrl+O
-key = "F"
-mods = "Command|Shift"
-
-
-
-# Map Cmd+G to Ctrl+G so Vim can map it
-[[keyboard.bindings]]
-chars = "\u0007" # Sends Ctrl+G
-key = "G"
-mods = "Command"
-
-# Map Cmd+P to Ctrl+P so Vim can map it to open the file finder
-[[keyboard.bindings]]
-chars = "\u0010" # Sends Ctrl+P
+chars = "\u0002i"
 key = "P"
 mods = "Command"
-
-# Map Cmd+Shift+P to Ctrl+K so Vim can map it
-[[keyboard.bindings]]
-chars = "\u000B" # Sends Ctrl+K
-key = "P"
-mods = "Command|Shift"
-
-
-
-
-
-
-
-# TMUX mappings of CMD
-# Mapping CMD combinations and sending them as Ctrl+B as TMUX uses Ctrl+B as the prefix
-# D T W Arrow Tab
-# This will make Alacritty work like iTerm2 with Tmux
 
 # Split pane horizontally
 [[keyboard.bindings]]
@@ -158,13 +126,11 @@ chars = "\u0002n" # Sends Ctrl+B, n
 key = "Tab"
 mods = "Control"
 
-
 # Close pane or Window - Cmd+W
 [[keyboard.bindings]]
 chars = "\u0002x" # Sends Ctrl+B, x
 key = "W"
 mods = "Command"
-
 
 # Focus upper pane - Ctrl+Cmd+Up
 [[keyboard.bindings]]
@@ -180,7 +146,7 @@ mods = "Command|Control"
 
 # Focus right pane - Ctrl+Cmd+Right
 [[keyboard.bindings]]
-chars = "\u0002l" # Sends Ctrl+B, l
+chars = "\u0002L" # Sends Ctrl+B, l
 key = "Right"
 mods = "Command|Control"
 
@@ -189,7 +155,6 @@ mods = "Command|Control"
 chars = "\u0002h" # Sends Ctrl+B, h
 key = "Left"
 mods = "Command|Control"
-
 
 # Same as above, but mapped to Cmd+Option+Arrow
 # Focus upper pane - Ctrl+Option+Up
@@ -216,7 +181,6 @@ chars = "\u0002h" # Sends Ctrl+B, h
 key = "Left"
 mods = "Command|Option"
 
-
 # Show the Tmux clipboard buffer - Cmd+Shift+V
 [[keyboard.bindings]]
 chars = "\u0002=" # Sends Ctrl+B, =
@@ -225,11 +189,119 @@ mods = "Command|Option"
 
 
 
+# -----------------------------------------------------------------------------
+# Keybindings - Macos CMD - keys
+# -----------------------------------------------------------------------------
 
-# Test binding
+
+
+
+# SELECT ALL
+# Capture Cmd+A and send it as Ctrl+D, A so Vim can map it to select all
 [[keyboard.bindings]]
-action = "ToggleViMode" # This is a good test binding since it will be visible in the status bar
-key = "E"
+chars = "\u0007A" # Sends Ctrl+D, A
+key = "A"
 mods = "Command"
 
+# COPY
+# Capture Cmd+C and send it as Ctrl+D, C so Vim can map it to copy
+[[keyboard.bindings]]
+chars = "\u0007C" # Sends Ctrl+D, C
+key = "C"
+mods = "Command"
+
+# FIND
+# Map Cmd+F to Ctrl+D, F so Vim can map it to search
+[[keyboard.bindings]]
+chars = "\u0007F" # Sends Ctrl+D, F
+key = "F"
+mods = "Command"
+
+# FIND IN FILES
+# Map Cmd+Shift+F to Ctrl+D, O so Vim can map it Find in files
+[[keyboard.bindings]]
+chars = "\u0007O" # Sends Ctrl+D, O
+key = "F"
+mods = "Command|Shift"
+
+# GIT
+# Map Cmd+G to Ctrl+D, G so Vim can map it
+[[keyboard.bindings]]
+chars = "\u0007G" # Sends Ctrl+D, G
+key = "G"
+mods = "Command"
+
+# OPEN FILE
+# Map Cmd+P to Ctrl+D, P so Vim can map it to open the file finder
+[[keyboard.bindings]]
+chars = "\u0007P" # Sends Ctrl+D, P
+key = "P"
+mods = "Command"
+
+# COMMAND PALETTE
+# Map Cmd+Shift+P to Ctrl+D, K so Vim can map it
+[[keyboard.bindings]]
+chars = "\u0007K" # Sends Ctrl+D, K
+key = "P"
+mods = "Command|Shift"
+
+# SAVE
+# Capture Cmd+S an send it as Ctrl+D, S so Vim can map it to save
+[[keyboard.bindings]]
+chars = "\u0007S" # Sends Ctrl+D, S
+key = "S"
+mods = "Command"
+
+# UNDO
+# Capture Cmd+z and send it as Ctrl+D, Z so Vim can map it to undo
+# Ctrl+y
+[[keyboard.bindings]]
+chars = "\u0007Z" # Sends Ctrl+D, Z
+key = "Z"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0007X" # Sends Ctrl+D, X
+key = "X"
+mods = "Command"
+
+[general]
+# https://alacritty.org/config-alacritty.html
+# Examples:
+# https://github.com/alacritty/alacritty/blob/v0.8.0/alacritty.yml#L370
+#
+# https://www.joshmedeski.com/posts/a-pretty-terminal-in-5-minutes/
+# https://www.joshmedeski.com/posts/macos-keyboard-shortcuts-for-tmux/
+
+live_config_reload = true
+
+
+# -----------------------------------------------------------------------------
+#
+# 
+
+# Bind Cmd Arrow up to Ctrl+Up
+# [[keyboard.bindings]]
+# chars = """:TSTextobjectGotoPreviousStart @function.outer
+# """
+# key = "Up"
+# mods = "Command"
+#
+# # Bind Cmd Arrow down to Ctrl+Down
+# [[keyboard.bindings]]
+# chars = """:TSTextobjectGotoNextStart @function.outer
+# """
+# key = "Down"
+# mods = "Command"
+#
+
+
+# Binf Cmd + arrow right to end
+# [[keyboard.bindings]]
+# chars = """
+# key = "Right"
+# mods = "Command"
+#
+#
+#
 

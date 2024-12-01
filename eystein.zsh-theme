@@ -20,5 +20,16 @@ ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[white]%}>"
 # Add a yellow ✗ if the branch is dirty
 ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[white]%}> %{$fg[yellow]%}✗"
 
-# Put it all together!
-PROMPT="$EYSTEIN_CURRENT_LOCA_ "
+gcloud_account="$(gcloud auth list --sort-by=~status --format json | jq -Mr '.[0].account')"
+if [[ "$gcloud_account" =~ "oncall" ]]; then
+    
+
+    EYSTEIN_CURRENT_LOCA_="%{$fg_bold[cyan]%}%~\$(git_prompt_info)%{$reset_color%} X"
+else
+    # Put it all together!
+    PROMPT="$EYSTEIN_CURRENT_LOCA_ X%{$reset_color%} "
+
+fi
+
+
+
